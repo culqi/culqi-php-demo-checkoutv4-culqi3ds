@@ -16,8 +16,8 @@ try {
   // Creando Cargo a una tarjeta
   $order = $culqi->Orders->create(
     array(
-      "amount" => 700, //minimo de 6 soles
-      "currency_code" => "PEN",
+      "amount" => $_POST["amount"], //minimo de 6 soles
+      "currency_code" => $_POST["currency_code"],
       "description" => 'Prueba Orden 1',
       "order_number" => "#id-" . time(),
       "client_details" => array(

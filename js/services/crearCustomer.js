@@ -1,3 +1,5 @@
+import config  from "../config/index.js"
+
 $("#response-panel").hide();
 $('#crearCustomer').on('click', function (e) {
   var address = $("#address").val();
@@ -10,7 +12,7 @@ $('#crearCustomer').on('click', function (e) {
 
   $.ajax({
     type: 'POST',
-    url: 'http://localhost/culqi-php-demo-checkoutv4-culqi3ds/libraries/culqi-php/examples/06-create-customer.php',
+    url: config.URL_BASE+'/ajax/customer.php',
     data: { address, address_c, country, email, f_name, l_name, phone },
     datatype: 'json',
     success: function (data) {
