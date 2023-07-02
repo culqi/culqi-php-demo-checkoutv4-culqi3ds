@@ -1,12 +1,25 @@
 import config from "./config/index.js";
 import culqiConfig from "./config/checkout.js";
 import "./config/culqi3ds.js";
-import { generateCardImpl } from "./services/impl/index.js";
+import { generateCardImpl, generateOrderImpl, generateChargeImpl } from "./services/impl/index.js";
 
 const jsonParams =
 {
-  installments: false
+  installments: paymenType === "cargo" ? true : false,
+  orderId: paymenType === "cargo" ? await generarOrder() : '',
 };
+
+async function generarOrder(){
+  const { statusCode, data } = await generateOrderImpl();
+  if (statusCode === 200) {
+    console.log("Order",data);
+    return data.id;
+  } else {
+    console.log('No se pudo obtener la orden');
+  }
+  return '';
+}
+
 culqiConfig(jsonParams);
 
 const deviceId = await Culqi3DS.generateDevice();
@@ -22,16 +35,30 @@ window.addEventListener("message", async function (event) {
 
     if (parameters3DS) {
       let statusCode = null;
-      const responseCard = await generateCardImpl({ customerId, deviceId, email, tokenId, parameters3DS });
-      statusCode = responseCard.statusCode;
+      if (paymenType === "cargo") {
+        const responseCharge = await generateChargeImpl({ tokenId, deviceId, email, parameters3DS });
+        statusCode = responseCharge.statusCode;
 
-      if (statusCode === 200) {
-        resultdivCard("TARJETA CREADA CON ÉXITO");
-        Culqi3DS.reset();
+        if (statusCode === 200) {
+          resultdivCard("CARGO CREADO CON ÉXITO");
+          Culqi3DS.reset();
 
-      } else {
-        resultdivCard("CREACIÓN DE TARJETA FALLIDA");
-        Culqi3DS.reset();
+        } else {
+          resultdivCard("CARGO FALLIDA");
+          Culqi3DS.reset();
+        }
+      }else{
+        const responseCard = await generateCardImpl({ customerId, deviceId, email, tokenId, parameters3DS });
+        statusCode = responseCard.statusCode;
+  
+        if (statusCode === 200) {
+          resultdivCard("TARJETA CREADA CON ÉXITO");
+          Culqi3DS.reset();
+  
+        } else {
+          resultdivCard("CREACIÓN DE TARJETA FALLIDA");
+          Culqi3DS.reset();
+        }
       }
     }
 
@@ -49,11 +76,37 @@ window.culqi = async () => {
     Culqi.close();
     tokenId = Culqi.token.id;
     email = Culqi.token.email;
-    customerId = $("#idCustomer").val();
+    if (paymenType === "cargo") {
+      const { statusCode, data } = await generateChargeImpl({tokenId, deviceId, email });
+      console.log(data);
+      console.log(statusCode);
+      if (statusCode === 200) {
+        if(data.action_code === "REVIEW"){
+          validationInit3DS({ statusCode, email, tokenId });
+        }
+      } else if (statusCode === 201) {
+        resultdivCard("CARGO EXITOSO - SIN 3DS");
+        Culqi3DS.reset();
+      } else {
+        resultdivCard("CARGO FALLIDO");
+        Culqi3DS.reset();
+      }
+    }else{
+      customerId = $("#idCustomer").val();
 
-    const { statusCode } = await generateCardImpl({ customerId, deviceId, email, tokenId });
-    validationInit3DS({ email, statusCode, tokenId });
-
+      const { statusCode, data } = await generateCardImpl({ customerId, deviceId, email, tokenId });
+      if (statusCode === 200) {
+        if(data.action_code === "REVIEW"){
+          validationInit3DS({ email, statusCode, tokenId });
+        }
+      } else if (statusCode === 201) {
+        resultdiv("TARJETA EXITOSA - SIN 3DS");
+        Culqi3DS.reset();
+      } else {
+        resultdiv("TARJETA FALLIDA");
+        Culqi3DS.reset();
+      }
+    }
   } else {
     alert(Culqi.error.user_message);
     $('#response-panel').show();
@@ -63,28 +116,16 @@ window.culqi = async () => {
 };
 
 const validationInit3DS = ({ statusCode, email, tokenId }) => {
-  if (statusCode === 200) {
-
     Culqi3DS.settings = {
       charge: {
         totalAmount: config.TOTAL_AMOUNT,
-        returnUrl: "http://localhost/culqi-php-demo-checkoutv4-culqi3ds/index.php"
+        returnUrl: config.URL_BASE
       },
       card: {
         email: email,
       }
     };
     Culqi3DS.initAuthentication(tokenId);
-
-  } else if (statusCode === 201) {
-    resultdiv("PAGO EXITOSO - SIN 3DS");
-    console
-    Culqi3DS.reset();
-  } else {
-    resultdiv("PAGO FALLIDO");
-    Culqi3DS.reset();
-
-  }
 }
 
 

@@ -7,8 +7,8 @@ export const generateOrderImpl = async () => {
   const bodyRequest = {
     amount: config.TOTAL_AMOUNT,
     currency_code: config.CURRENCY,
-    description: 'Venta de prueba',
-    order_number: 'pedido-' +(new Date).getTime(),
+    //description: 'Venta de prueba',
+    //order_number: 'pedido-' +(new Date).getTime(),
     client_details: {
       first_name: customerInfo.firstName,
       last_name: customerInfo.lastName,
@@ -34,9 +34,10 @@ export const generateCardImpl = async ({ customerId, email, tokenId, deviceId, p
 }
 
 
-export const generateChargeImpl = async ({tokenId,  email, parameters3DS = null}) => {
+export const generateChargeImpl = async ({tokenId, deviceId, email, parameters3DS = null}) => {
   var data_fraud = {
-   phone_number: "961778965"
+   phone_number: "961778965",
+   device_finger_print_id: deviceId,
 }
   var data = {
     amount : config.TOTAL_AMOUNT,
