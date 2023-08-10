@@ -8,8 +8,6 @@ const culqiConfig = (jsonParams) => {
     amount: config.TOTAL_AMOUNT,
     title: 'TAXI MAXIN', //Obligatorio para yape
     order: jsonParams.orderId,
-    culqiclient: 'magento',
-    culqiclientversion: '3.0',
     xculqirsaid: config.RSA_ID,
     rsapublickey: config.RSA_PUBLIC_KEY,
   });

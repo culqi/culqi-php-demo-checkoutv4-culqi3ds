@@ -18,13 +18,16 @@ try {
   );
 
   // Creando Cargo a una tarjeta
-  $tds = array("authentication_3DS" => array(
-    "eci" => $_POST["eci"],
-    "xid" => $_POST["xid"],
-    "cavv" => $_POST["cavv"],
-    "protocolVersion" => $_POST["protocolVersion"],
-    "directoryServerTransactionId" => $_POST["directoryServerTransactionId"]
-  ));
+  $tds = array();
+  if (isset($_POST["eci"])) {
+    $tds = array("authentication_3DS" => array(
+      "eci" => $_POST["eci"],
+      "xid" => $_POST["xid"],
+      "cavv" => $_POST["cavv"],
+      "protocolVersion" => $_POST["protocolVersion"],
+      "directoryServerTransactionId" => $_POST["directoryServerTransactionId"]
+    ));
+}
 
   $req_body = array(
     "amount" => $_POST["amount"],
