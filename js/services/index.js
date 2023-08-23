@@ -96,13 +96,13 @@ class Service {
   }
 
   createOrder = async (bodyOrder) => {
-    return this.#http2({ endPoint: "ajax/order.php", body: bodyOrder });
+    return this.#http2({ endPoint: "/ajax/order.php", body: bodyOrder });
   }
   createCard = async (bodyCard) => {
-    return this.#http3({ endPoint: "ajax/card.php", body: bodyCard });
+    return this.#http3({ endPoint: "/ajax/card.php", body: bodyCard });
   }
   createCharge = async (bodyCharge) => {
-    return this.#http3({ endPoint: "ajax/charge.php", body:bodyCharge});
+    return this.#http3({ endPoint: "/ajax/charge.php", body:bodyCharge});
   }
 }
 export default Service;
