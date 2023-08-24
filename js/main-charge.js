@@ -76,7 +76,7 @@ const validationInit3DS = ({ statusCode, email, tokenId }) => {
     Culqi3DS.settings = {
       charge: {
         totalAmount: config.TOTAL_AMOUNT,
-        returnUrl: "http://localhost/culqi-php-demo-checkoutv4-culqi3ds"
+        returnUrl: "http://localhost:8888"
       },
       card: {
         email: email,
