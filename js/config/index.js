@@ -1,7 +1,7 @@
 export default Object.freeze({
   TOTAL_AMOUNT: 700,
   CURRENCY: "PEN",
-  PUBLIC_KEY: "pk_test_e94078b9b248675d",
+  PUBLIC_KEY: "pk_test_90667d0a57d45c48",
   RSA_ID: '2ab335ad-c40d-4375-8dad-3ea315de23b0',
   RSA_PUBLIC_KEY: '-----BEGIN PUBLIC KEY-----'+
   'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9hD00BnivDj73/1SKZw5AyQvw'+
@@ -10,7 +10,7 @@ export default Object.freeze({
   'kbz8NO7jeiUxkZm75wIDAQAB'+
   '-----END PUBLIC KEY-----',
   COUNTRY_CODE: "PE",
-  URL_BASE: "http://localhost/culqi-php-demo-checkoutv4-culqi3ds",
+  URL_BASE: "http://localhost:8888",
 });
 
 export const customerInfo = {

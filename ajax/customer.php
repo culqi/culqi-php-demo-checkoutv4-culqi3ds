@@ -8,7 +8,7 @@ try {
   // Usando Composer (o puedes incluir las dependencias manualmente)
   include_once dirname(__FILE__) . '/../libraries/Requests/library/Requests.php';
   Requests::register_autoloader();
-  include_once dirname(__FILE__) . '/../libraries/culqi-php/lib/culqi.php';
+  include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php'
   include_once '../settings.php';
 
   $culqi = new Culqi\Culqi(array('api_key' => SECRET_KEY));
