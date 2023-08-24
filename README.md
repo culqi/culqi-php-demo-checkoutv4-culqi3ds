@@ -73,7 +73,3 @@ Para poder visualizar el frontend de la demo ingresar a la siguiente URL:
 
 - [Referencia de Documentación](https://docs.culqi.com/)
 - [Referencia de API](https://apidocs.culqi.com/)
-
-Para poder visualizar la documentación de los servicios/modelos ingresar a la siguiente URL: 
-
-- `http://localhost:8080/swagger-ui.html`
