@@ -14,6 +14,8 @@ La demo integra Culqi PHP, Checkout V4 , Culqi 3DS y es compatible con la v2.0 d
 
 > Recuerda que las credenciales son enviadas al correo que registraste en el proceso de afiliación.
 
+* Para encriptar el payload debes generar un id y llave RSA ingresando a CulqiPanel > Desarrollo > RSA Keys.
+
 ## Instalacion
 
 Para la instalcion de la libreria de culqi se debe ejecutar el siguiente comando en la raiz del proyecto 
@@ -67,7 +69,10 @@ Para poder visualizar el frontend de la demo ingresar a la siguiente URL:
 - Para probar creación de cards: `http://localhost:8080/index_card.html`
 
 
-### Documentación de servicios
+## Documentación
+
+- [Referencia de Documentación](https://docs.culqi.com/)
+- [Referencia de API](https://apidocs.culqi.com/)
 
 Para poder visualizar la documentación de los servicios/modelos ingresar a la siguiente URL: 
 
