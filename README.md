@@ -14,6 +14,16 @@ La demo integra Culqi PHP, Checkout V4 , Culqi 3DS y es compatible con la v2.0 d
 
 > Recuerda que las credenciales son enviadas al correo que registraste en el proceso de afiliación.
 
+## Instalacion
+
+Para la instalcion de la libreria de culqi se debe ejecutar el siguiente comando en la raiz del proyecto 
+
+```bash
+composer require culqi/culqi-php
+```
+
+Esto generara una carpeta vendor donde se encuentra la libreria de culqi-php
+
 ## Configuración backend
 
 Primero se tiene que modificar los valores del archivo `settings.php` que se encuentra en la raiz del proyecto. A continuación un ejemplo.
