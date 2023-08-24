@@ -16,15 +16,15 @@ La demo integra Culqi PHP, Checkout V4 , Culqi 3DS y es compatible con la v2.0 d
 
 * Para encriptar el payload debes generar un id y llave RSA ingresando a CulqiPanel > Desarrollo > RSA Keys.
 
-## Instalacion
+## Instalación
 
-Para la instalcion de la libreria de culqi se debe ejecutar el siguiente comando en la raiz del proyecto 
+Para la instalación de la librería de Culqi se debe ejecutar el siguiente comando en la raiz del proyecto .
 
 ```bash
 composer require culqi/culqi-php
 ```
 
-Esto generara una carpeta vendor donde se encuentra la libreria de culqi-php
+Esto generará una carpeta **vendor** donde se encuentra la librería **culqi-php**.
 
 ## Configuración backend
 
