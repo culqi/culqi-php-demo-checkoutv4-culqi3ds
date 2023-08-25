@@ -5,7 +5,7 @@ const culqiConfig = (jsonParams) => {
   Culqi.publicKey = config.PUBLIC_KEY;
   Culqi.settings({
     currency: config.CURRENCY,
-    amount: config.TOTAL_AMOUNT,
+    amount: jsonParams.amount,
     title: 'TAXI MAXIN', //Obligatorio para yape
     order: jsonParams.orderId,
     xculqirsaid: config.RSA_ID,
@@ -29,7 +29,7 @@ const culqiConfig = (jsonParams) => {
       buttonBackground: '', // hexadecimal
       menuColor: '', // hexadecimal
       linksColor: '', // hexadecimal
-      buttonText: '', // texto que tomará el botón
+      buttonText: jsonParams.buttonTex, // texto que tomará el botón
       buttonTextColor: '', // hexadecimal
       priceColor: '' // hexadecimal
     }

@@ -5,7 +5,7 @@ export default Object.freeze({
   RSA_ID: 'INSERTE_SU_RSA_ID',
   RSA_PUBLIC_KEY: 'INSERTE_SU_LLAVE_RSA',
   COUNTRY_CODE: "PE",
-  URL_BASE: "http://localhost:8888",
+  URL_BASE: "http://localhost/culqi-php-demo-checkoutv4-culqi3ds",
 });
 
 export const customerInfo = {
