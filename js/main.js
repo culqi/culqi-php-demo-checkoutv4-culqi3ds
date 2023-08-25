@@ -3,15 +3,16 @@ import culqiConfig from "./config/checkout.js";
 import "./config/culqi3ds.js";
 import { generateCardImpl, generateOrderImpl, generateChargeImpl } from "./services/impl/index.js";
 
-const jsonParams =
-{
+let jsonParams = {
   installments: paymenType === "cargo" ? true : false,
   orderId: paymenType === "cargo" ? await generarOrder() : '',
+  buttonTex: paymenType === "cargo" ? '' : 'Guardar Tarjeta',
+  amount : paymenType === "cargo" ? config.TOTAL_AMOUNT : ''
 };
 
 async function generarOrder(){
   const { statusCode, data } = await generateOrderImpl();
-  if (statusCode === 200) {
+  if (statusCode === 201) {
     console.log("Order",data);
     return data.id;
   } else {
@@ -35,11 +36,13 @@ window.addEventListener("message", async function (event) {
 
     if (parameters3DS) {
       let statusCode = null;
+      let objResponse = null;
       if (paymenType === "cargo") {
         const responseCharge = await generateChargeImpl({ tokenId, deviceId, email, parameters3DS });
+        objResponse = responseCharge.data.object;
         statusCode = responseCharge.statusCode;
 
-        if (statusCode === 200) {
+        if (statusCode === 201) {
           resultdivCard("CARGO CREADO CON ÉXITO");
           Culqi3DS.reset();
 
@@ -49,9 +52,10 @@ window.addEventListener("message", async function (event) {
         }
       }else{
         const responseCard = await generateCardImpl({ customerId, deviceId, email, tokenId, parameters3DS });
+        objResponse = responseCard.data.object;
         statusCode = responseCard.statusCode;
   
-        if (statusCode === 200) {
+        if (statusCode === 201) {
           resultdivCard("TARJETA CREADA CON ÉXITO");
           Culqi3DS.reset();
   
