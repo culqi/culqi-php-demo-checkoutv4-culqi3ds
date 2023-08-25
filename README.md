@@ -38,7 +38,7 @@ define('RSA_PUBLIC_KEY', 'Llave pública RSA que sirve para encriptar el payload
 ```
 ## Configuración frontend
 
-Para configurar los datos del cargo, pk del comercio y datos del cliente se tiene que modificar en el archivo `/js/config/index.js`.
+Para configurar los datos del cargo, pk del comercio, rsa_id,  rsa_public_key y datos del cliente se tiene que modificar en el archivo `/js/config/index.js`.
 
 ```js
 export default Object.freeze({
