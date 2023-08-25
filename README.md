@@ -38,7 +38,7 @@ define('RSA_PUBLIC_KEY', 'Llave pública RSA que sirve para encriptar el payload
 ```
 ## Configuración frontend
 
-Para configurar los datos del cargo, pk del comercio, rsa_id,  rsa_public_key y datos del cliente se tiene que modificar en el archivo `/js/config/index.js`.
+Para configurar los datos del cargo, pk del comercio y datos del cliente se tiene que modificar en el archivo `/js/config/index.js`.
 
 ```js
 export default Object.freeze({
@@ -59,14 +59,14 @@ export const customerInfo = {
 ```
 
 ## Inicializar la demo
-El proyecto se debe levantar con un servidor local(Ejemplo xampp)
+El proyecto se debe levantar con un servidor local(Ejemplo Xampp)
 
 ## Probar la demo
 
 Para poder visualizar el frontend de la demo ingresar a la siguiente URL:
 
-- Para probar cargos: `http://localhost:8080`
-- Para probar creación de cards: `http://localhost:8080/index_card.html`
+- Para probar cargos: `http://localhost/culqi-php-demo-checkoutv4-culqi3ds`
+- Para probar creación de cards: `http://localhost/culqi-php-demo-checkoutv4-culqi3ds/index_card.php`
 
 
 ## Documentación
