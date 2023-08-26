@@ -18,7 +18,7 @@ La demo integra Culqi PHP, Checkout V4 , Culqi 3DS y es compatible con la v2.0 d
 
 ## Instalación
 
-Para la instalación de la librería de Culqi se debe ejecutar el siguiente comando en la raiz del proyecto .
+Para la instalación de la librería de Culqi se debe ejecutar el siguiente comando en la raiz del proyecto.
 
 ```bash
 composer require culqi/culqi-php
