@@ -28,7 +28,7 @@ Esto generará una carpeta **vendor** donde se encuentra la librería **culqi-ph
 
 ## Configuración backend
 
-Primero se tiene que modificar los valores del archivo `settings.php` que se encuentra en la raiz del proyecto. A continuación un ejemplo.
+Primero se tiene que modificar los valores del archivo `settings.php` que se encuentra en la raíz del proyecto. A continuación un ejemplo.
 
 ```
 define('PUBLIC_KEY', 'Llave pública del comercio (pk_test_xxxxxxxxx)');
