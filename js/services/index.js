@@ -40,25 +40,33 @@ class Service {
       currency_code: body.currency_code,
     }
 
-    const response = await $.ajax({
-      type: 'POST',
-      url: `${this.#BASE_URL}/${endPoint}`,
-      data: bodyRequest,
-      success: function (data, status, xhr) {
-        statusCode = xhr.status;
-        //response = data;
-      }
-    });
-    console.log("statusCode",statusCode)
-    const responseJSON = await JSON.parse(response);
+    try {
+      const response = await $.ajax({
+        type: 'POST',
+        url: `${this.#BASE_URL}/${endPoint}`,
+        data: bodyRequest,
+        success: function (data, status, xhr) {
+          statusCode = xhr.status;
+          //response = data;
+        }
+      });
+      console.log("statusCode",statusCode)
+      const responseJSON = await JSON.parse(response);
+      console.log(responseJSON);
+      return { statusCode: statusCode, data: responseJSON }
+    } catch (err) {
+      return { statusCode: statusCode, data: null }
+    }
+    /*
     if (responseJSON.object === "order") {
-      return { statusCode: 200, data: responseJSON }
+      return { statusCode: statusCode, data: responseJSON }
     } else {
       return { statusCode: 401, data: responseJSON }
-    }
+    }*/
   }
 
   #http3 = async ({ endPoint, method = 'POST', body = {}, headers = {} }) => {
+    let statusCode = 502; 
     const authentication_3DS = body.authentication_3DS ? {
       eci: body.authentication_3DS.eci,
       xid: body.authentication_3DS.xid,
@@ -77,13 +85,13 @@ class Service {
       ...authentication_3DS,
     }
     try {
-      let statusCode = 502; 
       const response = await $.ajax({
         type: 'POST',
         url: `${this.#BASE_URL}/${endPoint}`,
         data: bodyRequest,
         success: function (data, status, xhr) {
           statusCode = xhr.status;
+          console.log("statusCode " +statusCode)
           //response = data;
         }        
       });
@@ -96,13 +104,13 @@ class Service {
   }
 
   createOrder = async (bodyOrder) => {
-    return this.#http2({ endPoint: "/ajax/order.php", body: bodyOrder });
+    return this.#http2({ endPoint: "ajax/order.php", body: bodyOrder });
   }
   createCard = async (bodyCard) => {
-    return this.#http3({ endPoint: "/ajax/card.php", body: bodyCard });
+    return this.#http3({ endPoint: "ajax/card.php", body: bodyCard });
   }
   createCharge = async (bodyCharge) => {
-    return this.#http3({ endPoint: "/ajax/charge.php", body:bodyCharge});
+    return this.#http3({ endPoint: "ajax/charge.php", body:bodyCharge});
   }
 }
 export default Service;
