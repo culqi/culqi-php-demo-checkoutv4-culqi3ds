@@ -38,7 +38,7 @@ try {
     "antifraud_details" => array(
       "address" => "Andres Reyes 338",
       "address_city" => "Lima",
-      "country_code" => "PEE",
+      "country_code" => "PE",
       "first_name" => "Roberto",
       "last_name" => "Beretta",
       "phone_number" => 123456789,
