@@ -6,8 +6,7 @@
 
 try {
   // Cargamos Requests y Culqi PHP
-  include_once dirname(__FILE__) . '/../libraries/Requests/library/Requests.php';
-  Requests::register_autoloader();
+  require '../vendor/autoload.php';
   include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php';
   include_once '../settings.php';
 
@@ -39,7 +38,7 @@ try {
     "antifraud_details" => array(
       "address" => "Andres Reyes 338",
       "address_city" => "Lima",
-      "country_code" => "PE",
+      "country_code" => "PEE",
       "first_name" => "Roberto",
       "last_name" => "Beretta",
       "phone_number" => 123456789,
