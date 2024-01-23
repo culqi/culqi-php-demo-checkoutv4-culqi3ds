@@ -6,8 +6,7 @@
 
 try {
   // Cargamos Requests y Culqi PHP
-  include_once dirname(__FILE__) . '/../libraries/Requests/library/Requests.php';
-  Requests::register_autoloader();
+  require '../vendor/autoload.php';
   include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php';
   include_once '../settings.php';
 
@@ -35,6 +34,7 @@ try {
   // Respuesta
   echo json_encode($order);//return $order;
 } catch (Exception $e) {
+  http_response_code(500);
   error_log($e->getMessage());
   echo $e->getMessage();
 }
