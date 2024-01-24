@@ -12,3 +12,4 @@ define('RSA_PUBLIC_KEY', '-----BEGIN PUBLIC KEY-----'.
 'HiuTfpBl6HpD6+02SQIDAQAB'.
 '-----END PUBLIC KEY-----');
 define('EMAIL_CUSTOMER', 'prueba1@culqi.com');
+define('ACTIVE_ENCRYPT', true);
