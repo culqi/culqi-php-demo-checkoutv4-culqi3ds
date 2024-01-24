@@ -6,15 +6,14 @@
 
 try {
   // Cargamos Requests y Culqi PHP
-  include_once dirname(__FILE__) . '/../libraries/Requests/library/Requests.php';
-  Requests::register_autoloader();
+  require '../vendor/autoload.php';
   include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php';
   include_once '../settings.php';
 
   $culqi = new Culqi\Culqi(array('api_key' => SECRET_KEY));
   $encryption_params = array(
-    "rsa_public_key" => RSA_ID,
-    "rsa_id" => RSA_PUBLIC_KEY
+    "rsa_public_key" => RSA_PUBLIC_KEY,
+    "rsa_id" => RSA_ID
   );
 
   // Creando Cargo a una tarjeta
@@ -52,7 +51,12 @@ try {
     )
   );
   $with_tds = ($req_body) + $tds;
-  $charge = $culqi->Charges->create($with_tds,$encryption_params);
+  
+  if (ACTIVE_ENCRYPT){
+    $charge = $culqi->Charges->create($with_tds,$encryption_params);
+  }else{
+    $charge = $culqi->Charges->create($with_tds);
+  }
   echo json_encode($charge);
 } catch (Exception $e) {
 
