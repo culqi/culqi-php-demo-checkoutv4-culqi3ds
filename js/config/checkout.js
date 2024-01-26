@@ -3,14 +3,27 @@ import config from "./index.js";
 const culqiConfig = (jsonParams) => {
 
   Culqi.publicKey = config.PUBLIC_KEY;
-  Culqi.settings({
-    currency: config.CURRENCY,
-    amount: jsonParams.amount,
-    title: 'TAXI MAXIN', //Obligatorio para yape
-    order: jsonParams.orderId,
-    xculqirsaid: config.RSA_ID,
-    rsapublickey: config.RSA_PUBLIC_KEY,
-  });
+  if(config.ACTIVE_ENCRYPT){
+    Culqi.settings({
+      currency: config.CURRENCY,
+      amount: jsonParams.amount,
+      title: 'TAXI MAXIN', //Obligatorio para yape
+      order: jsonParams.orderId,
+      xculqirsaid: config.RSA_ID,
+      rsapublickey: config.RSA_PUBLIC_KEY,
+    });
+
+  }
+  else {
+    Culqi.settings({
+      currency: config.CURRENCY,
+      amount: jsonParams.amount,
+      title: 'TAXI MAXIN', //Obligatorio para yape
+      order: jsonParams.orderId,     
+    });
+
+  }
+
 
   Culqi.options({
     lang: 'auto',
