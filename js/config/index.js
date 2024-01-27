@@ -11,6 +11,7 @@ export default Object.freeze({
   '-----END PUBLIC KEY-----',
   COUNTRY_CODE: "PE",
   URL_BASE: "http://localhost/culqi-php-demo-checkoutv4-culqi3ds",
+  ACTIVE_ENCRYPT: true,
 });
 
 export const customerInfo = {

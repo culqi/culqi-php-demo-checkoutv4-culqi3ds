@@ -29,6 +29,7 @@ Esto generará una carpeta **vendor** donde se encuentra la librería **culqi-ph
 ## Configuración backend
 
 Primero se tiene que modificar los valores del archivo `settings.php` que se encuentra en la raíz del proyecto. A continuación un ejemplo.
+Puedes activar la encriptación o desactivarla.
 
 ```
 define('PUBLIC_KEY', 'Llave pública del comercio (pk_test_xxxxxxxxx)');
@@ -39,6 +40,7 @@ define('RSA_PUBLIC_KEY', 'Llave pública RSA que sirve para encriptar el payload
 ## Configuración frontend
 
 Para configurar los datos del cargo, pk del comercio y datos del cliente se tiene que modificar en el archivo `/js/config/index.js`.
+Puedes activar la encriptación o desactivarla.
 
 ```js
 export default Object.freeze({
@@ -48,6 +50,7 @@ export default Object.freeze({
     RSA_ID: Id de la llave RSA,
     RSA_PUBLIC_KEY: Llave pública RSA que sirve para encriptar el payload de los servicios del checkout,
     COUNTRY_CODE: iso code del país(Ejemplo PE)
+    ACTIVE_ENCRYPT: true (true = encyptación activada , false = encyptación inactivada)
 });
 
 export const customerInfo = {
