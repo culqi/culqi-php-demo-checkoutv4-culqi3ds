@@ -34,8 +34,8 @@ Puedes activar la encriptación o desactivarla.
 ```
 define('PUBLIC_KEY', 'Llave pública del comercio (INSERTE_SU_LLAVE_PUBLICA)');
 define('SECRET_KEY', "Llave secreta del comercio (INSERTE_SU_LLAVE_PRIVADA)");
-define('RSA_ID', 'Id de la llave RSA');
-define('RSA_PUBLIC_KEY', 'Llave pública RSA que sirve para encriptar el payload de los servicios');
+define('RSA_ID', 'INSERTE_SU_RSA_ID');
+define('RSA_PUBLIC_KEY', 'INSERTE_SU_LLAVE_RSA');
 ```
 ## Configuración frontend
 
@@ -47,8 +47,8 @@ export default Object.freeze({
     TOTAL_AMOUNT: monto de pago,
     CURRENCY: tipo de moneda,
     PUBLIC_KEY: llave publica del comercio (INSERTE_SU_LLAVE_PUBLICA),
-    RSA_ID: Id de la llave RSA,
-    RSA_PUBLIC_KEY: Llave pública RSA que sirve para encriptar el payload de los servicios del checkout,
+    RSA_ID: 'INSERTE_SU_RSA_ID',
+    RSA_PUBLIC_KEY: 'INSERTE_SU_LLAVE_RSA',
     COUNTRY_CODE: iso code del país(Ejemplo PE)
     ACTIVE_ENCRYPT: true (true = encyptación activada , false = encyptación inactivada)
 });
@@ -63,6 +63,20 @@ export const customerInfo = {
 
 ## Inicializar la demo
 El proyecto se debe levantar con un servidor local(Ejemplo Xampp)
+
+## Configurar las pruebas y ejemplos
+
+Los archivos `settings.php` y `js/config/index.js` contienen placeholders:
+`INSERTE_SU_LLAVE_PUBLICA`, `INSERTE_SU_LLAVE_PRIVADA`,
+`INSERTE_SU_LLAVE_RSA` e `INSERTE_SU_RSA_ID`.
+Reemplázalos solo en tu copia local con tus propias llaves de prueba
+(`pk_test_` y `sk_test_`) y, si activas la encriptación, con tu llave pública
+RSA y su ID obtenidos en CulqiPanel.
+
+La llave privada de API (`INSERTE_SU_LLAVE_PRIVADA`) se configura únicamente
+en el backend (`settings.php`); nunca debe enviarse al navegador.
+No hagas commit de llaves ni credenciales. La demo hace llamadas reales
+a la API de Culqi: utiliza datos y llaves de prueba.
 
 ## Probar la demo
 
